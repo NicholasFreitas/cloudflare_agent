@@ -1,0 +1,22 @@
+{
+  "name": "threat-desk-agent",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.0.0"
+  },
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "agents": "^0.24.0",
+    "cloudflare-threat-desk": "file:.."
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^5.20260922.1",
+    "typescript": "^5.9.2",
+    "wrangler": "^4.136.1"
+  }
+}

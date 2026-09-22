@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Threat Desk</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <header class="header">
+        <div class="brand-mark" aria-hidden="true">TD</div>
+        <div>
+          <p class="eyebrow">CLOUDFLARE WORKERS AI</p>
+          <h1>Threat Desk</h1>
+        </div>
+        <div class="status-pill"><span></span> Analyst console</div>
+      </header>
+
+      <section class="intro">
+        <p class="eyebrow">ARTICLE INTELLIGENCE</p>
+        <h2>Turn breach reporting into a clear risk signal.</h2>
+        <p>Paste an article about a breach. A stateful Cloudflare Agent will identify the breach type, estimate the threat level, and extract evidence-based responsibility claims.</p>
+      </section>
+
+      <section class="workspace">
+        <form id="analysis-form" class="panel input-panel">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">01 / INPUT</p>
+              <h3>Article evidence</h3>
+            </div>
+            <span class="counter" id="character-count">0 chars</span>
+          </div>
+          <label for="article-text">Article text <span>(required)</span></label>
+          <textarea id="article-text" required placeholder="Paste the article text or the relevant excerpt here..."></textarea>
+          <button id="analyze-button" type="submit">
+            <span id="button-label">Analyze threat</span>
+            <span id="button-spinner" class="spinner" hidden></span>
+          </button>
+          <button id="cancel-button" class="cancel-button" type="button" hidden>Cancel analysis</button>
+          <p class="privacy-note">Your article is sent to your Cloudflare Agent. Workers AI credentials remain in the deployed Worker.</p>
+        </form>
+
+        <section class="panel results-panel" aria-live="polite">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">02 / ASSESSMENT</p>
+              <h3>Threat summary</h3>
+            </div>
+            <span id="result-state" class="result-state">Awaiting input</span>
+          </div>
+          <div id="empty-state" class="empty-state">
+            <div class="empty-icon">+</div>
+            <p>Your assessment will appear here.</p>
+            <span>Include enough article context for the model to identify impact and attack details.</span>
+          </div>
+          <div id="result-content" hidden>
+            <div class="threat-banner">
+              <div>
+                <span class="eyebrow">THREAT LEVEL</span>
+                <strong id="threat-level">—</strong>
+              </div>
+              <div class="threat-meter"><i></i><i></i><i></i><i></i></div>
+            </div>
+            <div class="stat-grid">
+              <div class="stat"><span>Breach type</span><strong id="breach-type">—</strong></div>
+              <div class="stat"><span>Reported responsible party</span><strong id="responsible-party">—</strong></div>
+              <div class="stat"><span>Article authorship</span><strong id="article-authorship">—</strong></div>
+            </div>
+            <div class="result-block"><span class="eyebrow">SUMMARY</span><p id="summary"></p></div>
+            <div class="result-block"><span class="eyebrow">SIGNALS</span><ul id="signals"></ul></div>
+            <div class="result-block"><span class="eyebrow">CONFIDENCE / UNCERTAINTIES</span><p id="confidence"></p><ul id="uncertainties"></ul></div>
+            <div class="result-block"><span class="eyebrow">REASONING</span><p id="reasoning"></p></div>
+          </div>
+          <div id="error-state" class="error-state" hidden></div>
+        </section>
+      </section>
+      <footer>Threat Desk <span>•</span> Powered by Cloudflare Workers AI</footer>
+    </main>
+    <script src="renderer.js"></script>
+  </body>
+</html>

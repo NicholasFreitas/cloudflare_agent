@@ -1,0 +1,23 @@
+{
+  "name": "threat-desk-agent",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-09-22",
+  "compatibility_flags": ["nodejs_compat"],
+  "ai": {
+    "binding": "AI"
+  },
+  "durable_objects": {
+    "bindings": [
+      {
+        "name": "THREAT_AGENT",
+        "class_name": "ThreatAgent"
+      }
+    ]
+  },
+  "migrations": [
+    {
+      "tag": "v1",
+      "new_sqlite_classes": ["ThreatAgent"]
+    }
+  ]
+}

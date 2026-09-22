@@ -1,0 +1,16 @@
+{
+  "name": "cloudflare-threat-desk",
+  "version": "1.0.0",
+  "description": "Desktop threat-level summaries powered by Cloudflare Workers AI.",
+  "main": "src/main.js",
+  "scripts": {
+    "start": "electron .",
+    "agent:dev": "npm --prefix cloudflare-agent run dev"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.7"
+  },
+  "devDependencies": {
+    "electron": "^37.0.0"
+  }
+}
